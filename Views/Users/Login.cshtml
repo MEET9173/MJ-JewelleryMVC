@@ -1,0 +1,80 @@
+﻿@model MJ_JewelleryMVC.Models.UsersModel.signin
+@{
+    ViewData["Title"] = "Login";
+}
+<head>
+    <!-- CSS FILES HERE -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/vendors/plugins.min.css" rel="stylesheet" />
+    <!-- endinject -->
+</head>
+
+<body>
+
+
+    <!-- Login  Area -->
+    <div class="tm-section tm-login-register-area bg-white tm-padding-section">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <form asp-controller="Users" asp-action="Login" class="tm-form tm-login-form">
+                        <h4>Login</h4>
+                        <p>Become a part of our community!</p>
+                        <div class="tm-form-inner">
+                            <div class="tm-form-field">
+                                <label asp-for="email">Username or email address*</label>
+                                    <input type="email" asp-for=email id="txtemail">
+                                <span asp-validation-for="email" class="text-danger"></span>
+                            </div>
+                            <div class="tm-form-field">
+                                <label asp-for="password">Password*</label>
+                                <input type="password" asp-for=password id="txtpassword">
+                                <span asp-validation-for="password" class="text-danger"></span>
+                            </div>
+                            <div class="tm-form-field">
+                                <input type="checkbox" name="login-remember" id="login-remember">
+                                <label for="login-remember">Remember Me</label>
+                                <p class="mb-0"><a href="#">Forgot your password?</a></p>
+                            </div>
+                            <div class="tm-form-field">
+                                <button type="submit" id="btnlogin" class="tm-button">Login</button>
+                            </div>
+                            <div class="tm-form-field">
+                                <div class="tm-form-sociallogin">
+                                    <h6>Or, Login with :</h6>
+                                    <ul>
+                                        <li><a href="#" class="facebook-btn"><i class="fab fa-facebook"></i></a></li>
+                                        <li><a href="#" class="google-btn"><i class="fab fa-google"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                        @if (TempData["msg"] != null)
+                        {
+                            @if (TempData["msg"] == "Not Login. something went wrong..!!")
+                            {
+                                <script>
+                                    alert('@TempData["msg"].ToString();');
+                                    window.location.href = "@Url.Action("Login","Users")";
+                                </script>
+                            }
+                            <script>
+                                alert('@TempData["msg"].ToString();');
+                                window.location.href = "@Url.Action("Index","Home")";
+                            </script>
+                        }
+                        
+                    </div>
+
+                </div>
+                </div>
+                </div>
+    <!--// Login Area -->
+       
+
+</body>
+

@@ -1,0 +1,91 @@
+﻿@model MJ_JewelleryMVC.Models.UsersModel.Register
+@{
+    ViewData["Title"] = "Register";
+}
+<head>
+    <!-- CSS FILES HERE -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/vendors/plugins.min.css" rel="stylesheet" />
+    <!--             endinject -->
+</head>
+
+<body>
+    <main class="page-content">
+
+
+        <div class="tm-section tm-login-register-area bg-white tm-padding-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form asp-controller="Users" asp-action="Register" class="tm-form tm-register-form">
+                            <h4>Create an account</h4>
+                            <p>Welcome! Register for an account</p>
+                            <div class="tm-form-inner">
+                                <div class="tm-form-field">
+                                    <label asp-for="userName">Username</label>
+                                    <input type="text" asp-for="userName" id="register-username name="userName">
+                                    <span asp-validation-for="userName" class="text-danger"></span>
+                                </div>
+                                <div class="tm-form-field">
+                                    <label asp-for="email">Email address</label>
+                                    <input type="email" asp-for="email" id="register-email" name="email">
+                                    <span asp-validation-for="email" class="text-danger"></span>
+                                </div>
+                                <div class="tm-form-field">
+                                    <label asp-for="password">Password</label>
+                                    <input type="password" asp-for="password" id="register-password" name="password"
+                                           >
+                                    <span asp-validation-for="password" class="text-danger"></span>
+                                </div>
+                                <div class="tm-form-field">
+                                    <div>
+                                        <input type="checkbox" id="register-pass-show" name="register-pass-show">
+                                        <label for="register-pass-show">Show Password</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="register-terms" name="register-terms">
+                                        <label for="register-terms">
+                                            I have read and agree to the website <a href="#">
+                                                terms and
+                                                conditions
+                                            </a>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="tm-form-field">
+                                    <button type="submit" class="tm-button">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                        @if (TempData["msg"] != null)
+                        {
+                            @if (TempData["msg"] == "Not Register. something went wrong..!!")
+                            {
+                                <script>
+                                    alert('@TempData["msg"].ToString();');
+                                    window.location.href = "@Url.Action("Register","Users")";
+                                </script>
+                            }
+                            <script>
+                                alert('@TempData["msg"].ToString();');
+                                window.location.href = "@Url.Action("Login","Users")";
+                            </script>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// Register Area -->
+        <!-- JS FILES HERE -->
+        <!-- inject:js -->
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/vendors/plugins.min.js"></script>
+        <script src="~/js/site.js"></script>
+        <!-- endinject -->
+    </main>
+</body>
+
+
